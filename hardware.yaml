@@ -1,0 +1,19 @@
+# hardware.yaml
+gpu:
+  enabled: true
+  device_ids: [0, 1]  # 使用的GPU编号
+  batch_size:
+    train: 64              # 训练批次大小
+    inference: 128          # 推理批次大小
+    
+  precision: 
+    fp16: true               # 是否启用混合精度
+    opt_level: O1            # 优化级别
+    
+  memory_management:
+    max_alloc_ratio: 0.9     # 最大显存占用比例（0.8表示使用80%显存）
+    cleanup_interval: 50    # 每处理50批次清理一次缓存
+
+cpu:
+  num_workers: 2             # 数据加载线程数
+  pin_memory: true           # 是否使用锁页内存
